@@ -1,4 +1,4 @@
-import { pages } from "../../pages.config"
+import { menu } from "../../pages.config"
 export class Header {
 
     constructor() {
@@ -8,12 +8,12 @@ export class Header {
     #menu = () => {
         return(`
             <ul role="list"  class="items-center justify-end gap-1 hidden sm:flex">
-                ${String(pages.map(
+                ${String(menu.map(
                     page => {
                         const path = window.location.pathname
                         const activeByMenu = (
-                            path.replaceAll('/','').toLocaleLowerCase() == (page.route).toLocaleLowerCase() ||
-                            path.replaceAll('/','').toLocaleLowerCase() == "" && (page.route).toLocaleLowerCase() == "home"
+                            path.replaceAll('/','').toLocaleLowerCase() == (page.route).replaceAll('/','').toLocaleLowerCase() ||
+                            path.replaceAll('/','').toLocaleLowerCase() == "" && (page.route).replaceAll('/','').toLocaleLowerCase() == "home"
                         ) ? "active" : null
                         return(`
                             <li>
